@@ -40,7 +40,7 @@ def check_in():
                         break
                     else:
                         raise TypeError
-                except:
+                except TypeError:
                     print("sorry that wasn't a valid choice, please enter a number bigger than 0")
                 guest_names = []
                 for guest in range(num_guests):
