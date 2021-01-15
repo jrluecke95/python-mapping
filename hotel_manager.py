@@ -34,21 +34,23 @@ def check_in():
             room_num = input("What room is yours? ")
             if room_num in hotel[floor_num]:
                 try:
-                    if len(hotel[floor_num][room_num]) > 0:
-                        print("sorry this room is already occupied")
-                    else:
+                    if len(hotel[floor_num][room_num]) == 0:
                         print("great! lets get you checked in.")
                         num_guests = int(input("how many guests will be staying with you? "))
-                        guest_names = []
-                        for guest in range(num_guests):
-                            name = input(f"What is guests number {guest + 1} name?")
-                            guest_names.append(name)
-                        hotel[floor_num][room_num] = guest_names
-        break
+                        break
+                    else:
+                        raise TypeError
+                except:
+                    print("sorry that wasn't a valid choice, please enter a number bigger than 0")
+                guest_names = []
+                for guest in range(num_guests):
+                    name = input(f"What is guests number {guest + 1} name?")
+                    guest_names.append(name)
+                    hotel[floor_num][room_num] = guest_names
             else:
-                raise TypeError:
-            except:
-                print("sorry that wasn't a valid selection")
+                raise TypeError
+        except TypeError:
+            print("sorry that wasn't a valid selection")
     return hotel
 
 def check_out():
